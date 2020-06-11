@@ -1,0 +1,17 @@
+{
+  "name": "TF2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "steam-trade": "^0.2.6",
+    "steam-user": "^4.12.4",
+    "tf2": "^3.0.1"
+  }
+}
