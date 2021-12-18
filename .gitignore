@@ -128,3 +128,4 @@ dist
 
 # ignored folder
 ignored/
+test/
