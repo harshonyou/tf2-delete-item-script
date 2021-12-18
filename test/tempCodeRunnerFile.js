@@ -1,1 +1,0 @@
-process.env.ACCOUNT_NAME
