@@ -1,16 +1,22 @@
-const clear = require("clear");
-const chalk = require("chalk");
-const figlet = require("figlet");
-const inquirer = require("inquirer");
+// Imports
+const clear = require("clear"); // clears the screen
+const chalk = require("chalk"); // custom CLI colors
+const figlet = require("figlet"); // custom ASCII text
+const inquirer = require("inquirer"); // QnA
+var path = require('path'); 
 
-// const feedbackQuestions = require("./questions");
-
+// Introduction (self-calling func())
 (function intro(){
     clear();
-    console.log()
+    console.log();
     console.log(
     chalk.yellowBright(
-        figlet.textSync("TF2 Item Deletion Script", { horizontalLayout: "full" })
+        figlet.textSync("TF2 Item", { horizontalLayout: "fitted" })
+    )
+    );
+    console.log(
+    chalk.yellowBright(
+        figlet.textSync("Deletion Script", { horizontalLayout: "fitted" })
     )
     );
     console.log(
@@ -27,8 +33,7 @@ const inquirer = require("inquirer");
     );
 })();
 
-
-
+// Functionallity Selector (self-calling func() with arr of commands as signature)
 (function options_selector(list) {
     inquirer.prompt([
     {
@@ -41,48 +46,44 @@ const inquirer = require("inquirer");
     .then(answers => {
         switch (answers.command) {
             case list[0]:
-                    maxCapacity()
+                    maxCapacity();
                 break;
             case list[1]:
-                    console.log(list[1])
-                    showAll()
+                    showAll();
                 break;
             case list[2]:
-                    console.log(list[2])
-                    deleteAll()
+                    deleteAll();
                 break;
             case list[3]:
-                    console.log(list[3])
-                    deleteSelected()
+                    deleteSelected();
                 break;
-            case list[3]:
-                    console.log("Thank You!")
+            case list[4]:
+                    console.log(chalk.underline(chalk.red("Thank You!\n")))
                     exit()
                 break;
             default:
                 break;
         }
     });
-})(['Know Your Backpack Slot', 'Show All', 'Delete All', 'Delete Selected', 'Exit']);
+})(['Check Your Backpack Slots', 'Show Your Inventory', 'Delete All Supply Crates', 'Delete Selected Item', 'Exit']);
 
+// Event Handlers
 let maxCapacity = () => {
-    require('./commands/maxCapacity')
+    require(path.join(__dirname, 'commands', 'maxCapacity.js'))
 }
 
 let showAll = () => {
-    require('./commands/showAll')
+    require(path.join(__dirname, 'commands', 'maxCapacity.js'))
 }
 
 let deleteAll = () => {
-    require("./commands/deleteAll.js")
+    require(path.join(__dirname, 'commands', 'maxCapacity.js'))
 }
 
 let deleteSelected = () => {
-    require("./commands/deleteSelective.js")
+    require(path.join(__dirname, 'commands', 'maxCapacity.js'))
 }
 
 let exit = () => {
     process.exit(1)
-}
-
-// feedbackQuestions();    
+} 

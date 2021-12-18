@@ -16,7 +16,6 @@
     "dotenv": "^10.0.0",
     "figlet": "^1.5.2",
     "inquirer": "^8.2.0",
-    "steam-trade": "^0.2.6",
     "steam-user": "^4.12.4",
     "tf2": "^3.0.1",
     "tf2-item-list": "^1.0.1"

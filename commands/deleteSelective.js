@@ -1,15 +1,17 @@
-const SteamUser = require('steam-user');
-const TeamFortress2 = require('tf2');
+// Imports
+const SteamUser = require('steam-user'); // connection to steam
+const TeamFortress2 = require('tf2'); // connection to tf2 inventory
 const chalk = require("chalk");
+var path = require('path');
 
-require('dotenv').config()
+require('dotenv').config();
 
 let user = new SteamUser();
 let tf2 = new TeamFortress2(user);
 let inquirer = require('inquirer')
-var items = require('../tf2Items')
-var loader = require('../loader')
+var loader = require(path.join(__dirname, 'loader.js'));
 
+// Recursive Async Function For ItemID Input(s)
 const collectInputs = async (inputs = []) => {
     const prompts = [
         {
@@ -45,25 +47,24 @@ user.on('loggedOn',() =>{
     user.gamesPlayed([440]);
 });
 
-tf2.on('connectedToGC',() =>{
+tf2.on('connectedToGC', () => {
     collectingLoader.stop();
-    console.log("connectedToGC");
-    // tf2.deleteItem(4000939270);
 	(async () => {
+        console.log(chalk.underline(chalk.bold(chalk.magentaBright("Make Sure You Note The Correct ItemID From 'Show Your Inventory' Option."))))
         const inputs = await collectInputs();
         for (let index = 0; index < inputs.length; index++) {
-            // tf2.deleteItem(4000939270);
+            // tf2.deleteItem(inputs[index]['inputValue']);
             // console.log(inputs[index]['inputValue']);
         }
-        console.log(chalk.magenta("Deleted Selected Items!"));
+        console.log(chalk.magenta(`Deleted ${inputs.length} Selected Items!`));
         user.logOff();
+        loggingOffLoader = loader.loader("Logging Out", 2, 100);
     })()
-    // console.log("Deleted");
-    
 });
 
 
-user.on('disconnected', ()=>{
-    console.log(chalk.redBright("Logged Out!"));
+user.on('disconnected', () => {
+    loggingOffLoader.stop();
+    console.log(chalk.redBright("Logged Out!\n"));
     process.exit(1);
-})
+});

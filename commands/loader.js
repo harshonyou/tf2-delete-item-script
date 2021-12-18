@@ -1,3 +1,4 @@
+// Custom Loading CLI Animation
 const chalk = require("chalk");
 var CLI = require('clui'),
     Spinner = CLI.Spinner;

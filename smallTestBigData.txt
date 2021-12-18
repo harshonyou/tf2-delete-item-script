@@ -1,3 +1,0 @@
-<div class="invBox fiq0 ubc_sniper" onclick="javascript:window.location.href='/item/schema/14'">
-<img id="item15" class="item" src="http://mirror.pointysoftware.net/tf2items/items-sniper/w_sniperrifle_sized.png" alt="Quality 0 Sniper Rifle (14)" />
-</div>
