@@ -7,6 +7,7 @@ const inquirer = require("inquirer");
 
 (function intro(){
     clear();
+    console.log()
     console.log(
     chalk.yellowBright(
         figlet.textSync("TF2 Item Deletion Script", { horizontalLayout: "full" })
@@ -73,11 +74,11 @@ let showAll = () => {
 }
 
 let deleteAll = () => {
-    console.log("deleteAll")
+    require("./commands/deleteAll.js")
 }
 
 let deleteSelected = () => {
-    console.log("deleteSelected")
+    require("./commands/deleteSelective.js")
 }
 
 let exit = () => {

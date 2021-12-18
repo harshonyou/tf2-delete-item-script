@@ -27,11 +27,20 @@ user.on('loggedOn',() =>{
 tf2.on('backpackLoaded',() =>{
     collectingLoader.stop();
     (async () => {
-        console.log(chalk.underline(chalk.green("ItemID")), "\t\t:\t", chalk.underline(chalk.yellow("ItemName")));
-    Object.values(tf2.backpack).forEach(val => {
-        console.log(chalk.greenBright(val['id']), "\t:\t", chalk.yellowBright(items.getItemName(val['def_index'])));
-    });
-    user.logOff();
+        let idsToBeDeleted = []
+        Object.values(tf2.backpack).forEach(val => {
+            if((items.getItemName(val['def_index']).includes("Supply Crate")) && !(items.getItemName(val['def_index']).includes("Supply Crate Key"))) {
+                console.log(val['id']);
+                idsToBeDeleted.push(val['id'])
+            } 
+        });
+        if (idsToBeDeleted.length == 0){
+                console.log(chalk.magenta("Nothing to be Deleted!"));
+        } else {
+            //Delete 
+            console.log(chalk.magenta(`Deleted ${idsToBeDeleted.length} Supply Creates!`));
+        }
+        user.logOff();
     })();
 });
 
