@@ -73,15 +73,15 @@ let maxCapacity = () => {
 }
 
 let showAll = () => {
-    require(path.join(__dirname, 'commands', 'maxCapacity.js'))
+    require(path.join(__dirname, 'commands', 'showAll.js'))
 }
 
 let deleteAll = () => {
-    require(path.join(__dirname, 'commands', 'maxCapacity.js'))
+    require(path.join(__dirname, 'commands', 'deleteAll.js'))
 }
 
 let deleteSelected = () => {
-    require(path.join(__dirname, 'commands', 'maxCapacity.js'))
+    require(path.join(__dirname, 'commands', 'deleteSelective.js'))
 }
 
 let exit = () => {
